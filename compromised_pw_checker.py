@@ -7,7 +7,7 @@ utility: check to see if our inputted password is already compromised our not
 
 Example 1:
 (in commmand promot with correct directory)
-pthon3 compromised_pw_checker.py password123
+python3 compromised_pw_checker.py password123
 
 Expected outcome would be something like:
 password123 was found 126927 times... you should change you password
@@ -15,7 +15,7 @@ done!
 
 
 Example 2:
-pthon3 compromised_pw_checker.py 3kmklfsd9
+python3 compromised_pw_checker.py 3kmklfsd9
 Expected outcome should be:
 3kmklfsd9 was NOT found, carry on!
 done!
