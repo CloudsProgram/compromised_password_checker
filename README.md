@@ -10,7 +10,7 @@ You can have peace of mind by using the code that I provide to conduct the check
 The code allows you to check your password without the need to provide your full password hash for the API request to https://haveibeenpwned.com/. This means that no one will know which specific password is being checked.
 
 
-Illustration on how the code works:
+# Illustration on how the code works:
 ![pw_checker_flow_chart](./images/pw_checker.drawio.png)
 
 
