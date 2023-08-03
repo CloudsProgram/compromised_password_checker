@@ -22,17 +22,14 @@ done!
 
 """
 # password is "password1234"
-# og hash fom sha-1 genarator
+# og hash from sha-1 genarator
 
 # Get data that has the HASH that starts w/ E6B6A
 # and use it to compare to our own hash to make sure it doesn't match that confirms that my pw is safe for now
 
 
-def request_api_data(query_char):
+def request_api_data(query_char:str) -> requests.models.Response:
     """
-    function: request_api_data
-    param: requests.models.Response
-    return: requests.models.Response 
     utility: 
     - takes in first 5 hash characters derived from from our inputted password (query_char)
     - use query_char with the api address to request for current compromised hashes that
@@ -50,11 +47,8 @@ def request_api_data(query_char):
     return res
 
 
-def get_password_leaks_count(hashes_got, my_pw_hash_check):
+def get_password_leaks_count(hashes_got:requests.models.Response, my_pw_hash_check:str) -> int:
     """
-    Function: get_password_leaks_count
-    param:  requests.models.Response, string
-    return: int
     utlity:
     - orginal string from the retrived hashes have the amount of times that specific hash has
     been compromised
@@ -72,11 +66,8 @@ def get_password_leaks_count(hashes_got, my_pw_hash_check):
     return 0
 
 
-def pwned_api_check(password):
+def pwned_api_check(password:str) -> int:
     """
-    Function: pwned_api_check
-    param: string
-    return: int
     utility:
     - take input passsword and convert it to its respective hash (sha-1)
     - get the first 5 characters of our pw hash, and rest of the characters of it.
@@ -87,6 +78,7 @@ def pwned_api_check(password):
     """
     sha1password = hashlib.sha1(password.encode('utf-8')).hexdigest().upper()
     first_five_hash, tail = sha1password[:5], sha1password[5:]
+
 
     response = request_api_data(first_five_hash)
     return get_password_leaks_count(response, tail)
@@ -100,7 +92,8 @@ def main(args):
                 f'{password} was found {count} times... you should change you password')
         else:
             print(f'{password} was NOT found, carry on!')
-    return 'done!'
+    print('Done!')
+    
 
 
 # check any arguments of chekcmypassword.py
